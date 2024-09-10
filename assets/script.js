@@ -62,16 +62,24 @@ function updateDots(index) {
 
 // Gestion du clic sur la flèche gauche (précédent)
 arrow_left.addEventListener("click", () => {
-	console.log("Flèche gauche cliquée")
-	currentIndex--
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1
+    /* utilisation opérateur ternaire 
+     condition ? expression_si_vraie : expression_si_fausse;
+     pourrait aussi être écit :  
+     if (currentIndex > 0) {
+    currentIndex = currentIndex - 1;
+    } else {
+    currentIndex = slides.length - 1;
+    }*/
+    console.log("Flèche gauche cliquée, index:", currentIndex)
 	updateDots(currentIndex) // Mettre à jour les dots
 	updateSlide(currentIndex)  // Mettre à jour l'image et le texte de la slide
 })
 
 // Gestion du clic sur la flèche droite (suivant)
 arrow_right.addEventListener("click", () => {
-	console.log("Flèche droite cliquée")
-	currentIndex++
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0
+    console.log("Flèche droite cliquée, index:", currentIndex)
 	updateDots(currentIndex) // Mettre à jour les dots
 	updateSlide(currentIndex)  // Mettre à jour l'image et le texte de la slide
 })
