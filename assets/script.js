@@ -17,9 +17,10 @@ const slides = [
 	}
 ]
 
-// Sélection des flèches
+// Sélection des flèches, du conteneur des dots
 let arrow_left = document.querySelector("#banner .arrow_left")
 let arrow_right = document.querySelector("#banner .arrow_right")
+const dotsContainer = document.querySelector(".dots")
 
 // Gestion du clic sur la flèche gauche (précédent)
 arrow_left.addEventListener("click", () => {
@@ -30,3 +31,19 @@ arrow_left.addEventListener("click", () => {
 arrow_right.addEventListener("click", () => {
 	console.log("Flèche droite cliquée")
 })
+
+// Fonction pour créer les dots dynamiquement
+function createDots() {
+    slides.forEach((slides, index) => {
+        const dot = document.createElement('div')
+        dot.classList.add('dot')
+        // Ajouter la classe 'dot_selected' au premier dot (pour la première slide)
+        if (index === 0) {
+            dot.classList.add('dot_selected')
+        }
+        dotsContainer.appendChild(dot)
+    })
+}
+
+// Appel de la fonction pour créer les dots lors du chargement de la page
+createDots()
